@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/VectorMap2D/Scenes/HomePage.unity
+    guid: 973933197be1f984696063cbc9dda4e6
+  - enabled: 1
+    path: Assets/VectorMap2D/Scenes/TutorialHomePage.unity
+    guid: fa82a9a97fe23d845b7d074bd7ef121e
+  - enabled: 1
+    path: Assets/VectorMap2D/Scenes/Tutorial.unity
+    guid: c8df3902863375144bdf569efda4b2a4
+  - enabled: 1
+    path: Assets/VectorMap2D/Scenes/StartGame.unity
+    guid: f4a7d6a908ce1bd4683bad5c00cfc48c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/VectorMap2D/Scenes/VectorMap2DScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  m_configObjects: {}

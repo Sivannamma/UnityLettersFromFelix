@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2e2d872b8981bd34f82ea4b2597eca97
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Factories: {instanceID: 0}
+  - TextSlider: {instanceID: 0}
+  - SettingsPanel: {instanceID: 0}
+  - ColorPicker: {instanceID: 0}
+  - MapBack: {instanceID: 0}
+  - DayNightToggle: {instanceID: 0}
+  - DayMat: {instanceID: 0}
+  - NightMat: {instanceID: 0}
+  - TextMat: {instanceID: 0}
+  - polygonsJson: {fileID: 4900000, guid: 39739bdc953a7d14a99e5256dbfed12d, type: 3}
+  - labelsJson: {fileID: 4900000, guid: 9cabfb1781dbd05449a8fe152f5e2bf4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
