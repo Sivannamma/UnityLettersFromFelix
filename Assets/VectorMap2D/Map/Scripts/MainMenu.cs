@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
         string level = "StartGame";
         SceneManager.LoadScene(level);
     }
+    public void PlayGameMode2()
+    {
+        string level = "StartGameMode2";
+        SceneManager.LoadScene(level);
+    }
     public void QuitGame()
     {
         Debug.Log("Quitting the game");

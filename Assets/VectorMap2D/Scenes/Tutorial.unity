@@ -1481,7 +1481,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1545,10 +1545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e6f44352e5f2643b7ec443182555f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMode: TutorialMode
   flagImage: {fileID: 0}
-  Sohpie: {fileID: 0}
-  player: {fileID: 0}
   displayCountry: {fileID: 0}
+  displayQuestionCountry: {fileID: 0}
   displayHint: {fileID: 0}
   countries: {fileID: 932955218}
   InvisibleMaterial: {fileID: 2100000, guid: 9f5a5c9947ee82b429edb6bdb3450ef1, type: 2}
@@ -12426,7 +12426,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -12806,8 +12806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 76, y: 1}
-  m_SizeDelta: {x: 175, y: 0}
+  m_AnchoredPosition: {x: 88.938, y: 0}
+  m_SizeDelta: {x: 162.06, y: 1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1326560168
 MonoBehaviour:
@@ -12836,7 +12836,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -15869,7 +15869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1867777986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16036,7 +16036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34be622b956b9634b8c08b913d059e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sohpie: {fileID: 0}
+  GoodJobDialog: {fileID: 0}
   speed: 10
   timeBetweenSteps: 0.1
   isMoving: 0
@@ -16053,6 +16053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a604b82d6bd05ab41912019c77f0dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodJobDialog: {fileID: 416890402}
   statisticDialog: {fileID: 1867777985}
   panel: {fileID: 257045576}
   countryInfo: {fileID: 416890402}
@@ -16092,8 +16093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.0342, y: -46}
-  m_SizeDelta: {x: 600.9316, y: 558.4521}
+  m_AnchoredPosition: {x: 4.217, y: -49.6684}
+  m_SizeDelta: {x: 669.9822, y: 638.3327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906718754
 MonoBehaviour:
@@ -18397,12 +18398,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 55885e2655587b7438324e9c4ed4918b, type: 2}
-    m_FontSize: 60
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -18410,17 +18411,22 @@ MonoBehaviour:
     m_LineSpacing: 1.1
   m_Text: 'Walk around the map
 
-    Get to everything !
+    Get to know everything !
 
     - countries
 
+    -
+    capitals
+
+    - flags
+
     - continents
 
-    -
-    oceans
+    - oceans
 
 
-    start the game when you feel ready'
+    start the game when
+    you feel ready'
 --- !u!222 &1906718756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18602,7 +18608,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

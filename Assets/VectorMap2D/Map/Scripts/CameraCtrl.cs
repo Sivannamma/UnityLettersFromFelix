@@ -118,11 +118,6 @@ public class CameraCtrl : MonoBehaviour
 							CountryInfoPanel.SetActive(false);
 						}
 					}
-
-
-
-
-
 				}
 				else
                 {
@@ -263,10 +258,10 @@ public class CameraCtrl : MonoBehaviour
 
 	public void checkCorrectCountry(string name)
     {
-		if (name.Equals(displayCountry.text) || (name + " Good job!").Equals(displayCountry.text)) // if its equal
+		
+		if (name.Equals(displayCountry.text) )
 		{
-			if (!(name + " Good job!").Equals(displayCountry.text)) // displaying good job
-			displayCountry.text += " Good job!";
+			
 			displayHint.gameObject.SetActive(false); // hiding the hint
 			Mover.setDance(true); // setting dance to true
 			
@@ -274,8 +269,9 @@ public class CameraCtrl : MonoBehaviour
 		}
 		else
 		{
+			
 			Mover.setDance(false);
-			if(!displayCountry.text.Equals("Country") && !displayCountry.text.Contains("!")) // only if we started the game
+			if(!displayCountry.text.Equals("Country")) // only if we started the game
 				player.GetComponent<Score>().setGuesses();
 		}
 	}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class checkCollisionWithPanel : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("panel of the statistic dialog")]
+    public GameObject goodJobDialog;
 
     [SerializeField]
     [Tooltip("panel of the statistic dialog")]
@@ -58,6 +61,19 @@ public class checkCollisionWithPanel : MonoBehaviour
                 return true;
             }
         }
+
+
+
+        if (goodJobDialog.gameObject.active)
+        {
+            var rectTransform5 = goodJobDialog.GetComponent<RectTransform>();
+            Vector2 localMousePosition5 = rectTransform5.InverseTransformPoint(position);
+            if (rectTransform5.rect.Contains(localMousePosition5))
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 }

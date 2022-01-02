@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-	[SerializeField] GameObject Sohpie;
+	[SerializeField] GameObject GoodJobDialog;
 	[SerializeField][Tooltip("The speed of the player")]
 	float speed = 50f;
 	[SerializeField]
@@ -38,7 +38,6 @@ public class Mover : MonoBehaviour
 				if (isArrived)
 				{
 					isArrived = false;
-					isCorrect = false;
 					anim.SetBool("Dance", false);
 				}
 
@@ -105,9 +104,9 @@ public class Mover : MonoBehaviour
 		if (isCorrect && list.Count ==0)
 		{
 			anim.SetBool("Dance", true);
+			GoodJobDialog.SetActive(true);
 			isArrived = true;
-			Sohpie.transform.position = this.transform.position + new Vector3(55, 55, 0);
-			Sohpie.gameObject.SetActive(true);
+			isCorrect = false;
 		}
 	}
 

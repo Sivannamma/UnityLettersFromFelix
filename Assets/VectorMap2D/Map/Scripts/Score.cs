@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private int guess; // variable to increment the guesses accorindly
+    private static int guess; // variable to increment the guesses accorindly
     [SerializeField] Text guessText; // the text that displays the number of the current country guesses
     [SerializeField] GameObject dialog; // statistic dialog, when the player wants to finish the game, we will show all the countries and guesses.
     private Dictionary<string, int> hm; // hashmap , in order to save the country we gave the player, and the number of guesses it tooks the player to find
@@ -67,5 +67,9 @@ public class Score : MonoBehaviour
         }
         // accessing the text displayer, which is in the dialog, child number 3.
         dialog.transform.GetChild(2).GetComponent<Text>().text=result;
+    }
+    public static void resetGuessQuestion()
+    {
+        guess = 0;
     }
 }
