@@ -1,11 +1,13 @@
 # Letters From Felix
 ### Felix is here to teach you everything about our globe! starting with the continents, countries, capitals, flags and more.
+![widerlook](https://user-images.githubusercontent.com/57447482/148088485-210bf53d-0a7d-4849-a4f3-cfce67f7f681.png)
 In this game you can play in diffrent modes. <br />
 1. Tutorial mode - you can explorer the globe, click on the countries and find out all the information you need. In this mode the labels of the countries are visible in order to let you learn and memorize.
 2. Country mode - you receive a country name or a flag, and you need to find the country on the map.
 3. Trivia mode - you receive a a question (about sports / history / invensions and more) and you need to find the country that answer on it.
  <br /> Both in Country mode and Trivia mode, the labels of the countries are hidden, thats why you need to memorize and work on your memory.
 ### Come to have fun while learning! Here is a closer look :
+<br />
 ### Home page : 
 ![MainMenu](https://user-images.githubusercontent.com/57447482/148084314-e934edea-4457-46ea-95fa-f00a629c7bc5.png)
 ### Rules :
