@@ -7,7 +7,6 @@ In this game you can play in diffrent modes. <br />
 3. Trivia mode - you receive a a question (about sports / history / invensions and more) and you need to find the country that answer on it.
  <br /> Both in Country mode and Trivia mode, the labels of the countries are hidden, thats why you need to memorize and work on your memory.
 ### Come to have fun while learning! Here is a closer look :
-<br />
 ### Home page : 
 ![MainMenu](https://user-images.githubusercontent.com/57447482/148084314-e934edea-4457-46ea-95fa-f00a629c7bc5.png)
 ### Rules :
