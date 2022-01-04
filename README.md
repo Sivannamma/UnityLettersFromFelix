@@ -22,8 +22,8 @@ In this game you can play in diffrent modes. <br />
 
 
 ### Links to further details about the game :
-[Link to the formal elements here](https://github.com/Sivannamma/LettersFromFelix-Unity/wiki)
+[Link to the formal elements here](https://github.com/Sivannamma/UnityLettersFromFelix/wiki)
 <br />
-[Link to the dramatic elements here](https://github.com/Sivannamma/LettersFromFelix-Unity/wiki/Dramatic-elements)
+[Link to the dramatic elements here](https://github.com/Sivannamma/UnityLettersFromFelix/wiki/Dramatic-elements)
 <br />
 [Link to the game](https://sivannamma.itch.io/felixandsophie)
