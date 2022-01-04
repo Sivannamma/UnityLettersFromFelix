@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: da4fac389304cc04d8a9752e865e181c
+guid: 1495c33d9c648b542bae9ac62d761b49
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
+      74: 1827226128182048838
+    second: Take 001
+  - first:
       74: -203655887218126122
-    second: Left Strafe Walk
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +38,40 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Left Strafe Walk
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: mixamo.com
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 508
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -187,10 +187,13 @@ namespace Models.Factories
                 List<Vector3> earthBoundarEnds = new List<Vector3>();
                 earthBoundarEnds.Clear();
                 var name = geo["name"]["common"].str;
-                if ((geo["capital"] + "").Contains("\\"))
-                    capitals.Add("\"" + name + "\"", (geo["capital"] + "").Substring(2, (geo["capital"] + "").IndexOf("\\") - 2));
-                else
-                   capitals.Add("\""+ name + "\"", (geo["capital"]+"").Substring(2, (geo["capital"] + "").Length-4));
+                if (!capitals.ContainsKey("\"" + name + "\""))
+                {
+                    if ((geo["capital"] + "").Contains("\\"))
+                        capitals.Add("\"" + name + "\"", (geo["capital"] + "").Substring(2, (geo["capital"] + "").IndexOf("\\") - 2));
+                    else
+                        capitals.Add("\"" + name + "\"", (geo["capital"] + "").Substring(2, (geo["capital"] + "").Length - 4));
+                }
                 name = System.Text.RegularExpressions.Regex.Unescape(name);
                 var c = geo["latlng"].list;
                 var dotMerc = GeoConvert.LatLonToMetersForEarth(c[0].f, c[1].f);

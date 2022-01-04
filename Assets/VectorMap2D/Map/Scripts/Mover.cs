@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
+	[SerializeField] GameObject Sophie;
 	[SerializeField] GameObject GoodJobDialog;
 	[SerializeField][Tooltip("The speed of the player")]
 	float speed = 50f;
@@ -38,6 +39,7 @@ public class Mover : MonoBehaviour
 				if (isArrived)
 				{
 					isArrived = false;
+					Sophie.gameObject.SetActive(false);
 					anim.SetBool("Dance", false);
 				}
 
@@ -104,6 +106,8 @@ public class Mover : MonoBehaviour
 		if (isCorrect && list.Count ==0)
 		{
 			anim.SetBool("Dance", true);
+			Sophie.gameObject.SetActive(true);
+			Sophie.transform.position = this.transform.position + new Vector3(100, 100, 0);
 			GoodJobDialog.SetActive(true);
 			isArrived = true;
 			isCorrect = false;
@@ -119,9 +123,13 @@ public class Mover : MonoBehaviour
 		else
 			ans= axis == true ? "WalkingRight" : "WalkingUp";
 		if (ans.Equals("WalkingUp"))
-			this.transform.rotation= new Quaternion(0, -180, 0, 0);
+		{
+			this.transform.rotation = new Quaternion(0, 0, 0, 0);
+		}
 		else
-			this.transform.rotation= new Quaternion(0,0,0,0);
+		{
+			this.transform.rotation = new Quaternion(0, -180, 0, 0);
+		}
 
 		return ans;
 	}
@@ -129,10 +137,10 @@ public class Mover : MonoBehaviour
 	// function that is responsible for turning all the animations of the player to false
 	private void setAnimationFalse()
     {
-		anim.SetBool("WalkingLeft", false);
-		anim.SetBool("WalkingRight", false);
-		anim.SetBool("WalkingDown", false);
-		anim.SetBool("WalkingUp", false);		
+				anim.SetBool("WalkingLeft", false);
+				anim.SetBool("WalkingRight", false);
+				anim.SetBool("WalkingDown", false);
+				anim.SetBool("WalkingUp", false);
 	}
 
 	// function that is responsible for stopping all of the coroutines (if the player decides to click other place, we want to stop moving, and set the new destination)
