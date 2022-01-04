@@ -58,15 +58,20 @@ public class Score : MonoBehaviour
     public void setStatistics()
     { 
         string result = "";
+        string result2 = "";
         int index = 1;
         // iterating on the hackmap, we get key - country, value - guesses
         foreach (var item in hm)
         {
+            if(index<=12)
             result += index + ". " + item.Key + " : " + item.Value + "\n" ;
+            else
+                result2 += index + ". " + item.Key + " : " + item.Value + "\n";
             index++;
         }
-        // accessing the text displayer, which is in the dialog, child number 3.
+        // accessing the text displayer, which is in the dialog, child number 2 and 3.
         dialog.transform.GetChild(2).GetComponent<Text>().text=result;
+        dialog.transform.GetChild(3).GetComponent<Text>().text = result2;
     }
     public static void resetGuessQuestion()
     {

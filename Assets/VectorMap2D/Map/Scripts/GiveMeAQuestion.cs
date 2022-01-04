@@ -11,6 +11,7 @@ using UnityEngine.UI;
 
 public class GiveMeAQuestion : MonoBehaviour
 {
+    ArrayList populationChildIndexes;
     private bool isThereImage = false;
     private Sprite globalFlagImage;
     [SerializeField][Tooltip("Which mode we want to execute")] string gameMode;
@@ -25,7 +26,6 @@ public class GiveMeAQuestion : MonoBehaviour
 
     // saving our random country
     private int rand = 0;
-    private int numOfCountries = 233;
     private int nameOffSet = 6; // in order to remove the word "layer"
     private string countryToFind;
 
@@ -43,25 +43,42 @@ public class GiveMeAQuestion : MonoBehaviour
             readFromFile();
             
         }
+        if (gameMode.Equals("Mode1"))
+        {
+            populationChildIndexes = new ArrayList();
+            for (int i = 0; i < countries.transform.GetChildCount(); i++)
+            {
+                Transform child = countries.transform.GetChild(i).GetChild(0);
+                string name = child.GetComponent<CountryInfo>().name;
+                if (long.Parse(child.GetComponent<CountryInfo>().Population) > 8000000 && isFlag(name))
+                {
+                    populationChildIndexes.Add(i);
+                }
+            }
+
+        }
+
+    }
+    public bool isFlag(string name)
+{
+        if(name.Equals("Lao PDR") || name.Equals("Dem. Rep. Korea") || name.Equals("W. Sahara") || name.Contains("D'Ivoire") || name.Equals("Dem. Rep. Congo") || name.Equals("Congo"))
+             return false;
+        return true;
+}
+    public void Update()
+    {
+        if(isThereImage)
+            flagImage.sprite = globalFlagImage;
     }
 
     public void readFromFile()
     {
-      //  Debug.Log(Application.streamingAssetsPath);
-        string fileName = Application.streamingAssetsPath + "/countriesQuestionsMode2";
-
-        using (StreamReader reader = new StreamReader(fileName))
-        {
-            string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                string [] currentLine = line.Split('-');
-                question.Add(new KeyValuePair<string, string>(currentLine[0], "\"" + currentLine[1] + "\""));
-            }
-        }
+        QuestionsHolder q = new QuestionsHolder();
+        question = q.questions();
     }
     public void mode2()
     {
+
         int random = Random.Range(0, question.Count);
         countryToFind = question[random].Value;
         // going over our countries to detect at which position is the country we randomed.
@@ -75,6 +92,14 @@ public class GiveMeAQuestion : MonoBehaviour
         }
         displayQuestionCountry.gameObject.SetActive(true);
         displayQuestionCountry.text = question[random].Key;
+        if(displayQuestionCountry.text.Length > 65)
+        {
+            displayQuestionCountry.fontSize = 40;
+        }
+        else
+        {
+            displayQuestionCountry.fontSize = 50;
+        }
         displayCountry.text = question[random].Value;
         displayHint.gameObject.SetActive(false);
         displayHint.text = "";
@@ -91,28 +116,18 @@ public class GiveMeAQuestion : MonoBehaviour
         public  void mode1()
     {
         int randCategory = 0; // variable to indicate if its flag or country
-        do
-        {
-            // random number between 0 to 233 : thats the country the player needs to find
-            rand = Random.Range(0, numOfCountries);
+                                                        
+        globalFlagImage = null;
+        flagImage.sprite = null;
+        isThereImage = false;
+       
+        rand = Random.Range(0, populationChildIndexes.Count); // random country for the question
             // getting the country in position rand
-            child = countries.transform.GetChild(rand);
-            // move Sophie to destination country
-           // Debug.Log(child.name);
-    /*        setFlag(child.name.Substring(0, child.name.Length - nameOffSet), child);
-
-            //  random number 0 or 1 , if 0 we display country name, otherwise we display flag
-            randCategory = 1;// Random.Range(0, 2);
-
-         
-            if (randCategory == 1)
-              if (isThereImage && long.Parse(child.transform.GetChild(0).GetComponent<CountryInfo>().Population) > 10000000){
-                        break;
-                }
-                    else
-                        randCategory = 0;*/
-            
-        } while (long.Parse(child.transform.GetChild(0).GetComponent<CountryInfo>().Population) < 10000000);
+            rand = (int)(populationChildIndexes[rand]);
+            child = countries.transform.GetChild((int)(rand));
+             randCategory = Random.Range(0, 2);
+        if(randCategory==1)
+              setFlag(child.name.Substring(0, child.name.Length - nameOffSet));
 
         // saving the name minus substring of the word layer at the end
         countryToFind = child.name.Substring(0, child.name.Length - nameOffSet);
@@ -185,34 +200,25 @@ public class GiveMeAQuestion : MonoBehaviour
 
     }
 
-    IEnumerator GetRequest(string uri, Transform currentChild)
+    IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             // Request and wait for the desired page.
-            yield return
-           webRequest.SendWebRequest();
+            yield return webRequest.SendWebRequest();
 
-/*          while (!webRequest.isDone)
-            {
-
-            }*/
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
-                     // Debug.Log(pages[page] + ": Error: " + webRequest.error);
                     isThereImage = false;
-
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    // Debug.Log(pages[page] + ": HTTP Error: " + webRequest.error);
                     isThereImage = false;
                     break;
                 case UnityWebRequest.Result.Success:
-                      //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     string result = webRequest.downloadHandler.text;
                     string url = "";
                     var jsonData = JsonConvert.DeserializeObject(result); // convers string to an object, in our case json.
@@ -223,70 +229,30 @@ public class GiveMeAQuestion : MonoBehaviour
                         if (flags != null)
                             url = flags.GetValue("png").ToString();
                     }
-                 //   Debug.Log("calling set image");
-                    StartCoroutine(setDownloadImage(url, currentChild)); // starting coroutine in order to display the image from the url we got
-                    //setDownloadImage(url);
+                    StartCoroutine(setDownloadImage(url)); // starting coroutine in order to display the image from the url we got
                     break;
             }
         }
     }
 
-    public void setFlag(string name, Transform currentChild)
+    public void setFlag(string name)
     {
         try
         {
             string API_URL = "https://restcountries.com/v3.1/name/" + name;
-            StartCoroutine(GetRequest(API_URL,currentChild));
-       //  GetRequest(API_URL);
-
-            /*
-            // requesting the image url :
-            System.Net.WebRequest web = WebRequest.Create(API_URL);
-          
-            web.Method = "GET";
-            HttpWebResponse response = null;
-
-             response = (HttpWebResponse)web.GetResponse();
-
-            string result = "";
-            using (Stream stream = response.GetResponseStream()) // returns a json in string format
-            {
-                StreamReader sr = new StreamReader(stream);
-                result = sr.ReadToEnd(); // assigning it to our string
-                sr.Close(); // close the stream reader
-            }
-            string url = "";
-            var jsonData = JsonConvert.DeserializeObject(result); // convers string to an object, in our case json.
-            JArray json = (JArray)(jsonData);
-            foreach (JObject elem in json)
-            {
-                JObject flags = (JObject)(elem.GetValue("flags"));
-                if (flags != null)
-                    url = flags.GetValue("png").ToString();
-            }
-            StartCoroutine(setDownloadImage(url));*/ // starting coroutine in order to display the image from the url we got
+            StartCoroutine(GetRequest(API_URL));
         }
-        catch (System.Exception e) // exception -> setting image to default white
+        catch (System.Exception e) 
         {
-            // flagImage.GetComponent<Image>().sprite = null;
             isThereImage = false;
-           // Debug.Log("null image");
         }
     }
-    public IEnumerator setDownloadImage(string url, Transform currentChild)
+    public IEnumerator setDownloadImage(string url)
     {
-        //IEnumerator
         WWW www = new WWW(url);
-         yield return www;
-     /* while (!www.isDone)
-        {
+        yield return www;
 
-        }*/
-        // flagImage.GetComponent<Image>().sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
-       // if (www.texture == null)
-          //  Debug.Log("texture null");
         globalFlagImage = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
-        isThereImage = true;
-        child = currentChild;
+        isThereImage = true;      
     }
 }

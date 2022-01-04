@@ -227,15 +227,12 @@ public class CameraCtrl : MonoBehaviour
 			{
 				case UnityWebRequest.Result.ConnectionError:
 				case UnityWebRequest.Result.DataProcessingError:
-					//Debug.Log(pages[page] + ": Error: " + webRequest.error);
 					flagImage.GetComponent<Image>().sprite = null;
 					break;
 				case UnityWebRequest.Result.ProtocolError:
-					//Debug.Log(pages[page] + ": HTTP Error: " + webRequest.error);
 					flagImage.GetComponent<Image>().sprite = null;
 					break;
 				case UnityWebRequest.Result.Success:
-					//Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
 					string result = webRequest.downloadHandler.text;
 					string url = "";
 					var jsonData = JsonConvert.DeserializeObject(result); // convers string to an object, in our case json.
@@ -257,31 +254,6 @@ public class CameraCtrl : MonoBehaviour
 		{
 			string API_URL = "https://restcountries.com/v3.1/name/" + name;
 			StartCoroutine(GetRequest(API_URL));
-			// requesting the image url :
-			/*			WebRequest web = WebRequest.Create(API_URL);
-
-						web.Method = "GET";
-						HttpWebResponse response = null;
-
-						response = (HttpWebResponse)web.GetResponse();
-
-
-						string result = "";
-						using (Stream stream = response.GetResponseStream()) // returns a json in string format
-						{
-							StreamReader sr = new StreamReader(stream);
-							result = sr.ReadToEnd(); // assigning it to our string
-							sr.Close(); // close the stream reader
-						}
-						string url = "";
-						var jsonData = JsonConvert.DeserializeObject(result); // convers string to an object, in our case json.
-						JArray json =(JArray)(jsonData);
-						foreach(JObject elem in json){
-							JObject flags = (JObject)(elem.GetValue("flags"));
-							if(flags!=null)
-								url = flags.GetValue("png").ToString();
-						}
-							StartCoroutine(setDownloadImage(url));*/ // starting coroutine in order to display the image from the url we got
 		}
 		catch(System.Exception e) // exception -> setting image to default white
         {
